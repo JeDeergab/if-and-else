@@ -1,18 +1,22 @@
 #include <iostream>
 
+// for std::find
+#include <algorithm>
+
 int choices();
 
 int main() 
 {
 
     int x;
+    int validChoices[] = { 1,2,3,4 };
 
     while (true)
     {
 
         x = choices();
 
-        if (x == 1 || x == 2 || x == 3 || x == 4)
+        if (std::find(std::begin(validChoices), std::end(validChoices), x) != std::end(validChoices))
         {
             std::cout << "You typed: " << x << std::endl;
 
