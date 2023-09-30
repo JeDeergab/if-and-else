@@ -1,6 +1,9 @@
 #include <iostream>
+#include <limits>
 
 int choices();
+
+using namespace std;
 
 int main() 
 {
@@ -12,29 +15,33 @@ int main()
 
         x = choices();
 
-        if (x == 1 || x == 2 || x == 3 || x == 4)
+        switch (x)
         {
-            std::cout << "You typed: " << x << std::endl;
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+            cout << "You Typed: " << x << endl;
+            cin.clear();
+            break;
+        default:
+            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
 
             // clear any error flags
-            std::cin.clear();
+            cin.clear();
+
+            // discard unwanted input
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         }
-        else
-        {
-            std::cout << "Please input number between 1 and 4.";
-            return 0;
-        }
-
     }
-
 }
 
 // Ask for inputs
 int choices()
 {
     int choice;
-    std::cout << "Enter a number between 1 and 4: ";
-    std::cin >> choice;
+    cout << "Enter a number between 1 and 4: ";
+    cin >> choice;
     return choice;
 }
